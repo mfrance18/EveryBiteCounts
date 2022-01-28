@@ -34,27 +34,37 @@ namespace EveryBiteCounts.Controllers
 
         // GET api/<FoodEntryController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var foodEntry = _foodEntryRepository.GetFoodById(id);
+            return Ok(foodEntry);
         }
 
         // POST api/<FoodEntryController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(FoodEntry foodEntry)
         {
+            var userId = GetCurrentUserProfile().Id;
+            foodEntry.UserProfileId = userId;
+            foodEntry.CreateDateTime = DateTime.Now;
+            _foodEntryRepository.AddFoodEntry(foodEntry);
+            return CreatedAtAction("Get", new { id = foodEntry.Id }, foodEntry);
         }
 
         // PUT api/<FoodEntryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public IActionResult Put( FoodEntry foodEntry)
         {
+           
+            _foodEntryRepository.UpdateFoodEntry(foodEntry);
+            return NoContent();
         }
 
         // DELETE api/<FoodEntryController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _foodEntryRepository.DeleteFoodEntry(id);
         }
 
         private UserProfile GetCurrentUserProfile()
