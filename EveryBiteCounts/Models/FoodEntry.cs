@@ -8,6 +8,8 @@ namespace EveryBiteCounts.Models
 {
     public class FoodEntry
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
         public int UserProfileId { get; set; }
@@ -17,5 +19,6 @@ namespace EveryBiteCounts.Models
         public int MealTypeId { get; set; }
         public DateTime CreateDateTime { get; set; }
         public UserProfile UserProfile { get; set; }
+        public MealType MealType { get; set; }
     }
 }

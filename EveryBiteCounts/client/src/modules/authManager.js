@@ -1,6 +1,11 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const _apiUrl = "/api/userprofile";
+
+
+
+
 const _doesUserExist = (firebaseUserId) => {
     return getToken().then((token) =>
         fetch(`${_apiUrl}/DoesUserExist/${firebaseUserId}`, {
@@ -10,6 +15,7 @@ const _doesUserExist = (firebaseUserId) => {
             }
         }).then(resp => resp.ok));
 };
+
 const _saveUser = (userProfile) => {
     return getToken().then((token) =>
         fetch(_apiUrl, {
@@ -21,6 +27,7 @@ const _saveUser = (userProfile) => {
             body: JSON.stringify(userProfile)
         }).then(resp => resp.json()));
 };
+
 export const _getUserData = () => {
     return getToken().then((token) => {
         return fetch(`${_apiUrl}`, {
@@ -31,7 +38,9 @@ export const _getUserData = () => {
         }).then(resp => resp.json())
     });
 }
+
 export const getToken = () => firebase.auth().currentUser.getIdToken();
+
 export const login = (email, pw) => {
     return firebase.auth().signInWithEmailAndPassword(email, pw)
         .then((signInResponse) => {
@@ -49,9 +58,11 @@ export const login = (email, pw) => {
             });
         })
 };
+
 export const logout = () => {
     firebase.auth().signOut()
 };
+
 export const register = (userProfile, password) => {
     return firebase.auth().createUserWithEmailAndPassword(userProfile.email, password)
         .then((createResponse) => _saveUser({
@@ -59,6 +70,7 @@ export const register = (userProfile, password) => {
             firebaseUserId: createResponse.user.uid
         }));
 };
+
 export const onLoginStatusChange = (onLoginStatusChangeHandler) => {
     firebase.auth().onAuthStateChanged((user) => {
         onLoginStatusChangeHandler(!!user);

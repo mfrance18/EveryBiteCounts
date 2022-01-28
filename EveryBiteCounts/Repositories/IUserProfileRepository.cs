@@ -8,5 +8,6 @@ namespace EveryBiteCounts.Repositories
         void Add(UserProfile userProfile);
         List<UserProfile> GetAllProfiles();
         UserProfile GetByFirebaseUserId(string firebaseUserId);
+        UserProfile GetUserProfileById(int id);
     }
 }

@@ -13,7 +13,7 @@ namespace EveryBiteCounts.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class UserProfileController : ControllerBase
     {
         private readonly IUserProfileRepository _userProfileRepository;
@@ -22,12 +22,18 @@ namespace EveryBiteCounts.Controllers
             _userProfileRepository = userProfileRepository;
         }
 
-        [HttpGet]
-        public IActionResult GetUserProfile()
+        [HttpGet("GetUserProfileById/{id}")]
+        public IActionResult GetUserProfileById(int id)
         {
-            var claim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            return Ok(_userProfileRepository.GetByFirebaseUserId(claim));
+            return Ok(_userProfileRepository.GetUserProfileById(id));
         }
+
+        [HttpGet("{firebaseUserId}")]
+        public IActionResult GetUserProfile(string firebaseUserId)
+        {
+            return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
+        }
+
         [HttpGet("GetAllProfiles")]
         public IActionResult GetAllProfiles()
         {
