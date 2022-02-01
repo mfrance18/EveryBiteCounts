@@ -4,11 +4,12 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { addFood } from "../../modules/foodEntryManager";
 
 
-export const FoodEntryForm = ({ toggle, meal, render }) => {
+export const FoodEntryForm = ({ toggle, render }) => {
     const [foods, setFoods] = useState({
         name: "",
         calories: "",
-        mealTypeId: meal
+        createDateTime: "",
+        mealTypeId: 0
     })
 
     const handleControlledInputChange = (event) => {
@@ -42,6 +43,22 @@ export const FoodEntryForm = ({ toggle, meal, render }) => {
                     <FormGroup>
                         <Label htmlFor="name">How Many Calories?:</Label>
                         <Input className="form-control" type="text" id="calories" onChange={handleControlledInputChange} value={foods.calories} />
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label htmlFor="mealTypeId">Meal Type:</Label>
+                        <select className="form-control" id="mealTypeId" onChange={handleControlledInputChange} value={foods.mealTypeId}>
+                            <option value="0">Select</option>
+                            <option value="1">Breakfast</option>
+                            <option value="2">Lunch</option>
+                            <option value="3">Dinner</option>
+                            <option value="4">Snack</option>
+                        </select>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label htmlFor="date">Date:</Label>
+                        <Input className="form-control" type="date" placeholder="dd-mm-yyyy" id="createDateTime" onChange={handleControlledInputChange} value={foods.createDateTime} />
                     </FormGroup>
                 </Form>
             </div>

@@ -44,9 +44,9 @@ namespace EveryBiteCounts.Controllers
         [HttpPost]
         public IActionResult Post(FoodEntry foodEntry)
         {
+            
             var userId = GetCurrentUserProfile().Id;
             foodEntry.UserProfileId = userId;
-            foodEntry.CreateDateTime = DateTime.Now;
             _foodEntryRepository.AddFoodEntry(foodEntry);
             return CreatedAtAction("Get", new { id = foodEntry.Id }, foodEntry);
         }
