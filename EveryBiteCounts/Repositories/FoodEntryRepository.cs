@@ -141,11 +141,11 @@ namespace EveryBiteCounts.Repositories
                     cmd.CommandText = @"UPDATE FoodEntry
                                         SET 
                                             Name = @name,
-                                            Calories = @calories
+                                            Calories = @calories                          
                                          WHERE Id = @id";
 
                     cmd.Parameters.AddWithValue("@name", foodEntry.Name);
-                    cmd.Parameters.AddWithValue("@calories", foodEntry.Calories);  
+                    cmd.Parameters.AddWithValue("@calories", foodEntry.Calories);
                     cmd.Parameters.AddWithValue("@id", foodEntry.Id);
 
                     cmd.ExecuteNonQuery();

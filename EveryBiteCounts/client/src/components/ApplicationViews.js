@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { MealTypeList } from "./FoodEntries/MealTypeList";
+import { DayList } from "./FoodEntries/DayList";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -11,7 +11,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         <main>
             <Switch>
                 <Route exact path="/">
-                    {isLoggedIn ? <MealTypeList /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <DayList /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route exact path="/login">
