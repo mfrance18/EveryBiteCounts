@@ -78,6 +78,7 @@ export const DayList = () => {
 
     return (
         <>
+
             <section className="dateList">
                 <div>
                     <Button className="addDayButton" onClick={toggle}>Create A New Day</Button>
@@ -87,6 +88,7 @@ export const DayList = () => {
                     {dates.map(d => <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} foodDate={d.date} foods={foods} render={render} handleDeleteFood={handleDeleteFood} />)}
                 </div>
             </section>
+
 
 
             <Modal isOpen={modal} toggle={toggle} className="dailyModal">

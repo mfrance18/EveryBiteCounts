@@ -1,8 +1,11 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { DayList } from "./FoodEntries/DayList";
+import { UserList } from "./Friends/UsersList";
 import Login from "./Login";
 import Register from "./Register";
+import "./ApplicationViews.css"
+import { FriendsList } from "./Friends/FriendList";
 
 
 
@@ -12,10 +15,25 @@ export default function ApplicationViews({ isLoggedIn }) {
         <main>
             <Switch>
                 <Route exact path="/">
-                    {isLoggedIn ? <DayList /> : <Redirect to="/login" />}
-                </Route>
 
-                <Route exact path="/friends">
+
+                    <section className="homePage">
+                        <div>
+                            {isLoggedIn ? <DayList /> : <Redirect to="/login" />}
+                        </div>
+
+                        <section>
+                            <div className="myLists">
+                                <div className="userList">
+                                    {isLoggedIn ? <UserList /> : <Redirect to="/login" />}
+                                </div>
+                                <div className="friendsList">
+                                    {isLoggedIn ? <FriendsList /> : <Redirect to="/login" />}
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
 
                 </Route>
 

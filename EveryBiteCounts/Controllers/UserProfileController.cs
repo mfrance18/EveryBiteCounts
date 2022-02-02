@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
+
 namespace EveryBiteCounts.Controllers
 {
     [Route("api/[controller]")]
@@ -37,9 +38,19 @@ namespace EveryBiteCounts.Controllers
         [HttpGet("GetAllProfiles")]
         public IActionResult GetAllProfiles()
         {
-            List<UserProfile> profiles = _userProfileRepository.GetAllProfiles();
+            var currentUserId = GetCurrentUserProfile().Id; 
+            List<UserProfile> profiles = _userProfileRepository.GetAllPotentialFriends(currentUserId);
             return Ok(profiles);
         }
+
+        [HttpGet("GetFriends")]
+        public IActionResult GetUserFriends()
+        {
+            var userId = GetCurrentUserProfile().Id;
+            List<UserProfile> friends = _userProfileRepository.GetFriends(userId);
+            return Ok(friends);
+        }
+
 
         [HttpGet("DoesUserExist/{firebaseUserId}")]
         public IActionResult DoesUserExist(string firebaseUserId)
@@ -60,6 +71,12 @@ namespace EveryBiteCounts.Controllers
                 nameof(GetUserProfile),
                 new { firebaseUserId = userProfile.FirebaseUserId },
                 userProfile);
+        }
+
+        private UserProfile GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }

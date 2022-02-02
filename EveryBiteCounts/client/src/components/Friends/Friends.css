@@ -1,0 +1,23 @@
+.userCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+button.addFriend.btn.btn-secondary.btn-sm {
+    margin-left: 10px;
+}
+
+
+.userList {
+    border-radius: 18px;
+    border: solid lightgray 5px;
+    margin-top: 58px;
+    overflow-y: auto;
+    height: 300px;
+    background-color: lightcyan;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 2px 5px 5px grey;
+}

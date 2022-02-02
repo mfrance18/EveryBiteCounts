@@ -1,10 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const _apiUrl = "/api/userprofile";
-
-
-
 
 const _doesUserExist = (firebaseUserId) => {
     return getToken().then((token) =>
