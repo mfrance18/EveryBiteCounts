@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-
 import { addFood } from "../../modules/foodEntryManager";
+import "./FoodEntry.css"
 
 
 export const FoodEntryForm = ({ toggle, render }) => {
@@ -58,7 +58,7 @@ export const FoodEntryForm = ({ toggle, render }) => {
 
                     <FormGroup>
                         <Label htmlFor="date">Date:</Label>
-                        <Input className="form-control" type="date" placeholder="dd-mm-yyyy" id="createDateTime" onChange={handleControlledInputChange} value={foods.createDateTime} />
+                        <Input className="form-control" type="date" id="createDateTime" onChange={handleControlledInputChange} value={foods.createDateTime} />
                     </FormGroup>
                 </Form>
             </div>

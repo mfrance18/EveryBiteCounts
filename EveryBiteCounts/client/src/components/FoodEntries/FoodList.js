@@ -1,5 +1,6 @@
 import React from "react";
 import { Food } from "./Food";
+import "./FoodEntry.css"
 
 export const FoodList = ({ mealTypeId, foodDate, foods, render, handleDeleteFood }) => {
 

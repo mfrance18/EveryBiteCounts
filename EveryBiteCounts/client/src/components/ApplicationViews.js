@@ -5,6 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 
 
+
 export default function ApplicationViews({ isLoggedIn }) {
 
     return (
@@ -12,6 +13,10 @@ export default function ApplicationViews({ isLoggedIn }) {
             <Switch>
                 <Route exact path="/">
                     {isLoggedIn ? <DayList /> : <Redirect to="/login" />}
+                </Route>
+
+                <Route exact path="/friends">
+
                 </Route>
 
                 <Route exact path="/login">

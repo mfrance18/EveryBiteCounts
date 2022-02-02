@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, ModalBody, Button } from "reactstrap";
 import { FoodEditForm } from "./FoodEditForm";
-import "./Food.css"
+import "./FoodEntry.css"
 
 export const Food = ({ food, foodDate, handleDeleteFood, render }) => {
 
@@ -13,14 +13,25 @@ export const Food = ({ food, foodDate, handleDeleteFood, render }) => {
     if (food.createDateTime.slice(0, 10) == foodDate) {
         return (
             <>
-                <div className="foodItem">
-                    <p>{food.name}</p>
-                    <p>{food.calories}</p>
-                    <Button className="foodEdit" variant="secondary" size="sm" type="button"
-                        onClick={() => { setSelectedFood({ food }); toggleEdit() }}>Edit</Button>
-                    <Button className="foodDelete" variant="secondary" size="sm" type="button" onClick={() => handleDeleteFood(food.id)}>Delete</Button>
-                </div>
+                <section className="foodCardContainer">
+                    <div className="foodCard">
 
+                        <div>
+                            {food.name}
+                        </div>
+
+
+
+                        <div className="foodButtons">
+                            <div>
+                                {food.calories}
+                            </div>
+                            <Button className="foodEdit" variant="secondary" size="sm" type="button"
+                                onClick={() => { setSelectedFood({ food }); toggleEdit() }}>Edit</Button>
+                            <Button className="foodDelete" variant="secondary" size="sm" type="button" onClick={() => handleDeleteFood(food.id)}>Delete</Button>
+                        </div>
+                    </div>
+                </section>
                 <Modal isOpen={editModal} toggle={toggleEdit}>
 
                     <ModalBody>

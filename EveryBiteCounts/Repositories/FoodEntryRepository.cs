@@ -19,9 +19,11 @@ namespace EveryBiteCounts.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                       SELECT fe.Id as FoodEntryId, fe.[Name], fe.Calories, fe.MealTypeId, mt.Name as MealTypeName, fe.UserProfileId, fe.CreateDateTime
+                       SELECT fe.Id as FoodEntryId, fe.[Name], fe.Calories, fe.MealTypeId, mt.Name as MealTypeName, 
+                                fe.UserProfileId, fe.CreateDateTime, up.[FirstName] as UserProfileName, up.DailyCaloricGoal
                         FROM FoodEntry fe
                         Left join MealType mt on mt.Id = fe.MealTypeId
+                        Left join UserProfile up on up.Id = fe.UserProfileId
                         WHERE fe.UserProfileId = @userId";
 
                     var foodEntries = new List<FoodEntry>();
@@ -43,6 +45,11 @@ namespace EveryBiteCounts.Repositories
                             MealType = new MealType()
                             {
                                 Name = reader.GetString(reader.GetOrdinal("MealTypeName"))
+                            },
+                            UserProfile = new UserProfile()
+                            {
+                                FirstName = reader.GetString(reader.GetOrdinal("UserProfileName")),
+                                DailyCaloricGoal = reader.GetInt32(reader.GetOrdinal("DailyCaloricGoal"))
                             }
                         });
                     }

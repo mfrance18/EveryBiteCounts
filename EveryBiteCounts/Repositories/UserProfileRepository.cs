@@ -20,7 +20,7 @@ namespace EveryBiteCounts.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, 
-                               up.Email, up.ImageLocation
+                               up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight
                           FROM UserProfile up
                          WHERE FirebaseUserId = @FirebaseuserId";
 
@@ -38,7 +38,9 @@ namespace EveryBiteCounts.Repositories
                             FirstName = DbUtils.GetString(reader, "FirstName"),
                             LastName = DbUtils.GetString(reader, "LastName"),
                             Email = DbUtils.GetString(reader, "Email"),
-                            ImageLocation = DbUtils.GetString(reader, "ImageLocation")
+                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
+                            DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
+                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight")
                         };
                     }
                     reader.Close();
@@ -56,7 +58,7 @@ namespace EveryBiteCounts.Repositories
                 {
                     cmd.CommandText = @"
                           SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, 
-                               up.Email, up.ImageLocation
+                               up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight
                           FROM UserProfile up
                           WHERE up.Id = @Id
                     ";
@@ -76,8 +78,9 @@ namespace EveryBiteCounts.Repositories
                                 FirstName = DbUtils.GetString(reader, "FirstName"),
                                 LastName = DbUtils.GetString(reader, "LastName"),
                                 Email = DbUtils.GetString(reader, "Email"),
-                                ImageLocation = DbUtils.GetString(reader, "ImageLocation")
-
+                                ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
+                                DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
+                                CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight")
                             };
 
                         }
@@ -96,16 +99,17 @@ namespace EveryBiteCounts.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"INSERT INTO UserProfile (FirebaseUserId, FirstName, LastName, , 
-                                                                 Email, ImageLocation)
+                                                                 Email, ImageLocation, DailyCaloricGoal, CurrentWeight)
                                         OUTPUT INSERTED.ID
                                         VALUES (@FirebaseUserId, @FirstName, @LastName,
-                                                @Email, @ImageLocation)";
+                                                @Email, @ImageLocation, @DailyCaloricGoal, @CurrentWeight)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@FirstName", userProfile.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
                     DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
                     DbUtils.AddParameter(cmd, "@ImageLocation", userProfile.ImageLocation);
-
+                    DbUtils.AddParameter(cmd, "@DailyCaloricGoal", userProfile.DailyCaloricGoal);
+                    DbUtils.AddParameter(cmd, "@CurrentWeight", userProfile.CurrentWeight);
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
             }
@@ -119,7 +123,7 @@ namespace EveryBiteCounts.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName,
-                               up.Email, up.ImageLocation                
+                               up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight             
                           FROM UserProfile up     
                          ORDER BY up.FirstName ASC";
                     List<UserProfile> list = new List<UserProfile>();
@@ -134,6 +138,8 @@ namespace EveryBiteCounts.Repositories
                             LastName = DbUtils.GetString(reader, "LastName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
+                            DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
+                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight")
                         };
                         list.Add(userProfile);
                     }

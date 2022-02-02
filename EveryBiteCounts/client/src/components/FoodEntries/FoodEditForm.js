@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getFoodById, updateFood } from "../../modules/foodEntryManager";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import "./FoodEntry.css"
 
 export const FoodEditForm = ({ toggleEdit, food, render }) => {
     const [foods, setFoods] = useState(food)

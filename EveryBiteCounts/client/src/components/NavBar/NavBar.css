@@ -1,3 +1,18 @@
 nav.color-nav.navbar.navbar-expand-md.navbar-light {
     background-color: lightblue !important;
 }
+
+a.nav-link.active {
+    color: white !important;
+}
+
+a.nav-link {
+    color: black !important;
+    font-size: 20px !important;
+}
+
+a.navbar-brand.active {
+    color: black !important;
+    font-size: 25px !important;
+    font-weight: 400
+}

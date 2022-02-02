@@ -30,13 +30,6 @@ export default function NavBar({ isLoggedIn }) {
                             </NavItem>
 
                         }
-                        { /* When isLoggedIn === true, we will render the Home link */}
-                        {isLoggedIn &&
-                            <NavItem>
-                                <NavLink tag={RRNavLink} to="/friends">My Friends</NavLink>
-                            </NavItem>
-                        }
-
                     </Nav>
                     <Nav navbar>
                         {isLoggedIn &&

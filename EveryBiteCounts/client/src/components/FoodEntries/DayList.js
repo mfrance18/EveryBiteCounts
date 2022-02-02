@@ -5,6 +5,7 @@ import { deleteFood } from "../../modules/foodEntryManager";
 import { FoodEntryForm } from "./FoodEntryForm";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { DayCard } from "./DayCard";
+import "./FoodEntry.css"
 
 
 export const DayList = () => {
@@ -47,6 +48,8 @@ export const DayList = () => {
     let pointer = 0
 
 
+
+
     for (let i = 0; i < foods.length; i++) {
 
         let foodDate = foods[i].createDateTime.slice(0, 10)
@@ -72,15 +75,18 @@ export const DayList = () => {
 
 
 
+
     return (
         <>
-            <div>
-                <Button className="addButton" onClick={toggle}>Create A New Day</Button>
-            </div>
+            <section className="dateList">
+                <div>
+                    <Button className="addDayButton" onClick={toggle}>Create A New Day</Button>
+                </div>
 
-            <div>
-                {dates.map(d => <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} foodDate={d.date} foods={foods} render={render} handleDeleteFood={handleDeleteFood} />)}
-            </div>
+                <div>
+                    {dates.map(d => <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} foodDate={d.date} foods={foods} render={render} handleDeleteFood={handleDeleteFood} />)}
+                </div>
+            </section>
 
 
             <Modal isOpen={modal} toggle={toggle} className="dailyModal">
