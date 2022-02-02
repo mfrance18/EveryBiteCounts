@@ -1,5 +1,7 @@
 .homePage {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
+    padding-right: 20px;
+    flex-wrap: wrap;
 }
