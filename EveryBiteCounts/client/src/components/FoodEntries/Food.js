@@ -3,12 +3,13 @@ import { Modal, ModalBody, Button } from "reactstrap";
 import { FoodEditForm } from "./FoodEditForm";
 import "./FoodEntry.css"
 
-export const Food = ({ food, foodDate, handleDeleteFood, render }) => {
+export const Food = ({ food, foodDate, handleDeleteFood, render, }) => {
 
     const [selectedFood, setSelectedFood] = useState({ food: {} })
 
     const [editModal, setEditModal] = useState(false);
     const toggleEdit = () => setEditModal(!editModal);
+
 
     if (food.createDateTime.slice(0, 10) == foodDate) {
         return (

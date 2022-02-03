@@ -22,15 +22,13 @@ export default function NavBar({ isLoggedIn }) {
                 <NavbarBrand tag={RRNavLink} to="/">Every Bite Counts</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        { /* When isLoggedIn === true, we will render the Home link */}
+                    {/* <Nav className="mr-auto" navbar>
                         {isLoggedIn &&
                             <NavItem>
                                 <NavLink tag={RRNavLink} to="/">Home</NavLink>
                             </NavItem>
-
                         }
-                    </Nav>
+                    </Nav> */}
                     <Nav navbar>
                         {isLoggedIn &&
                             <>
@@ -43,6 +41,6 @@ export default function NavBar({ isLoggedIn }) {
                     </Nav>
                 </Collapse>
             </Navbar>
-        </div>
+        </div >
     );
 }

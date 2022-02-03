@@ -19,7 +19,7 @@ function App() {
 
   return (
     <Router>
-      <NavBar isLoggedIn={isLoggedIn} />
+      {/* <NavBar isLoggedIn={isLoggedIn} /> */}
       <ApplicationViews isLoggedIn={isLoggedIn} />
     </Router>
   );

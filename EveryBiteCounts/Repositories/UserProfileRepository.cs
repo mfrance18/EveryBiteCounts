@@ -19,7 +19,7 @@ namespace EveryBiteCounts.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, 
+                        SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, up.AboutMe,
                                up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight
                           FROM UserProfile up
                          WHERE FirebaseUserId = @FirebaseuserId";
@@ -40,7 +40,8 @@ namespace EveryBiteCounts.Repositories
                             Email = DbUtils.GetString(reader, "Email"),
                             ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
-                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight")
+                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight"),
+                            AboutMe = DbUtils.GetString(reader, "AboutMe"),
                         };
                     }
                     reader.Close();
@@ -57,7 +58,7 @@ namespace EveryBiteCounts.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                          SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, 
+                          SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, up.AboutMe,
                                up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight
                           FROM UserProfile up
                           WHERE up.Id = @Id
@@ -80,7 +81,8 @@ namespace EveryBiteCounts.Repositories
                                 Email = DbUtils.GetString(reader, "Email"),
                                 ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                                 DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
-                                CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight")
+                                CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight"),
+                                AboutMe = DbUtils.GetString(reader, "AboutMe"),
                             };
 
                         }
@@ -98,11 +100,11 @@ namespace EveryBiteCounts.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO UserProfile (FirebaseUserId, FirstName, LastName, , 
-                                                                 Email, ImageLocation, DailyCaloricGoal, CurrentWeight)
+                    cmd.CommandText = @"INSERT INTO UserProfile (FirebaseUserId, FirstName, LastName, 
+                                                                 Email, ImageLocation, DailyCaloricGoal, CurrentWeight, AboutMe)
                                         OUTPUT INSERTED.ID
                                         VALUES (@FirebaseUserId, @FirstName, @LastName,
-                                                @Email, @ImageLocation, @DailyCaloricGoal, @CurrentWeight)";
+                                                @Email, @ImageLocation, @DailyCaloricGoal, @CurrentWeight, @AboutMe)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@FirstName", userProfile.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
@@ -110,11 +112,12 @@ namespace EveryBiteCounts.Repositories
                     DbUtils.AddParameter(cmd, "@ImageLocation", userProfile.ImageLocation);
                     DbUtils.AddParameter(cmd, "@DailyCaloricGoal", userProfile.DailyCaloricGoal);
                     DbUtils.AddParameter(cmd, "@CurrentWeight", userProfile.CurrentWeight);
+                    DbUtils.AddParameter(cmd, "@AboutMe", userProfile.AboutMe);
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }
-        public List<UserProfile> GetAllProfiles()
+        public List<UserProfile> GetAllPotentialFriends(int userId)
         {
             using (var conn = Connection)
             {
@@ -122,11 +125,19 @@ namespace EveryBiteCounts.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName,
-                               up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight             
-                          FROM UserProfile up     
-                         ORDER BY up.FirstName ASC";
+                        SELECT *            
+                        FROM UserProfile up   
+                        WHERE up.Id != @id AND NOT EXISTS (
+	                        SELECT * 
+	                        FROM Followship f 
+	                        WHERE up.Id = f.FollowingUserProfileId AND f.FollowerUserProfileId = @id
+                        ) 
+                        ORDER BY up.FirstName ASC";
+
+                    DbUtils.AddParameter(cmd, "@id", userId);
+
                     List<UserProfile> list = new List<UserProfile>();
+
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -139,12 +150,59 @@ namespace EveryBiteCounts.Repositories
                             Email = DbUtils.GetString(reader, "Email"),
                             ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
-                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight")
+                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight"),
+                            AboutMe = DbUtils.GetString(reader, "AboutMe"),
                         };
                         list.Add(userProfile);
                     }
                     reader.Close();
                     return list;
+                }
+            }
+        }
+
+        public List<UserProfile> GetFriends(int userId)
+        {
+            using(var conn = Connection )
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT up.Id as UserProfileId, up.FirebaseUserId, up.FirstName, up.LastName, up.AboutMe,
+                                               up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight, f.Id as FollowshipId
+                                    FROM UserProfile up
+                                    JOIN Followship f on f.FollowingUserProfileId = up.Id
+                                    WHERE f.FollowerUserProfileId = @id";
+
+                    DbUtils.AddParameter(cmd, "@id", userId);
+
+                    List<UserProfile> friendsList = new List<UserProfile>();
+
+                    var reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        UserProfile userProfile = new UserProfile()
+                        {
+                            Id = DbUtils.GetInt(reader, "UserProfileId"),
+                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+                            FirstName = DbUtils.GetString(reader, "FirstName"),
+                            LastName = DbUtils.GetString(reader, "LastName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
+                            DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
+                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight"),
+                            AboutMe = DbUtils.GetString(reader, "AboutMe"),
+                            Followship = new Followship()
+                            {
+                                Id = DbUtils.GetInt(reader, "FollowshipId")
+                            }
+                        };
+                        friendsList.Add(userProfile);
+
+                    }
+                    reader.Close();
+                    return friendsList;
                 }
             }
         }
