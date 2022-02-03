@@ -1,5 +1,5 @@
 nav.color-nav.navbar.navbar-expand-md.navbar-light {
-    background-color: lightblue !important;
+    background-color: white !important;
 }
 
 a.nav-link.active {
@@ -15,4 +15,9 @@ a.navbar-brand.active {
     color: black !important;
     font-size: 25px !important;
     font-weight: 400
+}
+
+.collapse.navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
 }

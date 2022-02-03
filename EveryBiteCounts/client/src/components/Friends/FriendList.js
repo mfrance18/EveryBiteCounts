@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getUserFriends } from "../../modules/friendManager";
+import { deleteFriend, getUserFriends } from "../../modules/friendManager";
 import { FriendCard } from "./FriendCard";
 import "./Friends.css"
 
@@ -12,6 +12,11 @@ export const FriendsList = () => {
             .then(res => setFriends(res))
     }
 
+    const handleDeleteFriend = (id) => {
+        deleteFriend(id)
+            .then(() => getFriends())
+    }
+
     useEffect(() => {
         getFriends()
     }, [])
@@ -21,7 +26,8 @@ export const FriendsList = () => {
         <>
             <h2>Friends List</h2>
             <hr></hr>
-            {friends.map(friend => <FriendCard friend={friend} key={friend.id} />)}
+            {friends.map(friend => <FriendCard handleDeleteFriend={handleDeleteFriend} friend={friend} key={friend.id} />)}
+
         </>
     )
 

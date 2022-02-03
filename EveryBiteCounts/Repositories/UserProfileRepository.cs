@@ -164,10 +164,11 @@ namespace EveryBiteCounts.Repositories
                 conn.Open();
                 using(var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT * 
-                                        FROM UserProfile up
-                                        JOIN Followship f on f.FollowingUserProfileId = up.Id
-                                        WHERE f.FollowerUserProfileId = @id";
+                    cmd.CommandText = @"SELECT up.Id as UserProfileId, up.FirebaseUserId, up.FirstName, up.LastName,
+                                               up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight, f.Id as FollowshipId
+                                    FROM UserProfile up
+                                    JOIN Followship f on f.FollowingUserProfileId = up.Id
+                                    WHERE f.FollowerUserProfileId = 1";
 
                     DbUtils.AddParameter(cmd, "@id", userId);
 
@@ -179,14 +180,18 @@ namespace EveryBiteCounts.Repositories
                     {
                         UserProfile userProfile = new UserProfile()
                         {
-                            Id = DbUtils.GetInt(reader, "Id"),
+                            Id = DbUtils.GetInt(reader, "UserProfileId"),
                             FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
                             FirstName = DbUtils.GetString(reader, "FirstName"),
                             LastName = DbUtils.GetString(reader, "LastName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                             DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
-                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight")
+                            CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight"),
+                            Followship = new Followship()
+                            {
+                                Id = DbUtils.GetInt(reader, "FollowshipId")
+                            }
                         };
                         friendsList.Add(userProfile);
 

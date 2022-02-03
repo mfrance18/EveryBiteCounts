@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getAllUsers } from "../../modules/friendManager";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { UserCard } from "./UserCard";
 import "./Friends.css"
 
 
 export const UserList = () => {
     const [users, setUsers] = useState([])
+
 
     const getUsers = () => {
         getAllUsers()

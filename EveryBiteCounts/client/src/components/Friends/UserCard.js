@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "reactstrap";
 import "./Friends.css"
 
@@ -14,7 +14,7 @@ export const UserCard = ({ user }) => {
                     {user.fullName}
                 </div>
                 <div>
-                    <Button className="addFriend" variant="secondary" size="sm" type="button">Add Friend</Button>
+                    <Button className="addFriend" size="sm" type="button">Add Friend</Button>
                 </div>
             </section>
         </>

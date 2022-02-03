@@ -3,10 +3,8 @@ import { Button } from "reactstrap";
 import "./Friends.css"
 
 
-export const FriendCard = ({ friend }) => {
-
-
-    console.log()
+export const FriendCard = ({ friend, handleDeleteFriend }) => {
+    console.log(friend.followship.id, "friend")
     return (
         <>
             <section className="userCard">
@@ -15,9 +13,7 @@ export const FriendCard = ({ friend }) => {
                 </div>
                 <div>
                     <Button className="friendDetails" variant="secondary" size="sm" type="button">View Details</Button>
-                </div>
-                <div>
-                    <Button className="deleteFriend" variant="secondary" size="sm" type="button">Delete Friend</Button>
+                    <Button className="deleteFriend" variant="secondary" size="sm" type="button" onClick={() => handleDeleteFriend(friend.followship.id)}>Delete Friend</Button>
                 </div>
             </section>
         </>
