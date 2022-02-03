@@ -6,8 +6,9 @@ namespace EveryBiteCounts.Repositories
     public interface IUserProfileRepository
     {
         void Add(UserProfile userProfile);
-        List<UserProfile> GetAllProfiles();
+        List<UserProfile> GetAllPotentialFriends(int userId);
         UserProfile GetByFirebaseUserId(string firebaseUserId);
         UserProfile GetUserProfileById(int id);
+        List<UserProfile> GetFriends(int id);
     }
 }

@@ -6,14 +6,22 @@
     border: solid lightgray 5px;
     width: 900px;
     box-shadow: 2px 5px 5px grey;
-    background-color: rgb(32 99 197 / 25%);
+    background-color: white;
+    margin-bottom: 20px;
 }
 
 .dateList {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+    height: 100vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.dateList::-webkit-scrollbar {
+    display: none;
 }
 
 .newDateButton {

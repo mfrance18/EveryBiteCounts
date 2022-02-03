@@ -1,0 +1,66 @@
+form.form--login {
+    display: flex;
+    align-items: center;
+    height: 600px;
+    width: 600px;
+    flex-direction: column;
+    border: 5px solid #8c52ff;
+    border-radius: 18px;
+    background-color: #00c2cb;
+}
+
+form.form--register {
+    display: flex;
+    align-items: center;
+    height: 825px;
+    width: 600px;
+    flex-direction: column;
+    border: 5px solid #8c52ff;
+    border-radius: 18px;
+    background-color: #00c2cb;
+}
+
+.container--login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 200px;
+}
+
+.container--register {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainLogin {
+    display: flex;
+    background-color: #aab5f9;
+    width: auto;
+    height: auto;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainRegister {
+    display: flex;
+    background-color: #aab5f9;
+    width: auto;
+    height: auto;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.signIn {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+
+button.registerCancel.btn.btn-secondary {
+    margin-left: 5px;
+}
