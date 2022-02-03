@@ -72,3 +72,22 @@ export const onLoginStatusChange = (onLoginStatusChangeHandler) => {
         onLoginStatusChangeHandler(!!user);
     });
 };
+
+export const getUserById = (id) => {
+    return getToken().then((token) => {
+        return fetch(`${_apiUrl}/GetUserProfileById/${id}`,
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        ).then((res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                throw new Error("An unknown error occurred while trying to get UserInfo.");
+            }
+        });
+    });
+};

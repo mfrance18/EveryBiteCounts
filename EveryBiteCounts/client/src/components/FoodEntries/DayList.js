@@ -48,7 +48,8 @@ export const DayList = () => {
     let pointer = 0
 
 
-
+    const calories = foods.calories
+    console.log(calories)
 
     for (let i = 0; i < foods.length; i++) {
 

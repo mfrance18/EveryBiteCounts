@@ -10,20 +10,19 @@ export default function Register() {
 
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
-    const [displayName, setDisplayName] = useState();
     const [email, setEmail] = useState();
     const [currentWeight, setCurrentWeight] = useState();
-    const [caloricGoal, setCaloricGoal] = useState();
-    const [imageLocation, setImageLocation] = useState();
+    const [dailyCaloricGoal, setDailyCaloricGoal] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+    const [aboutMe, setAboutMe] = useState();
 
     const registerClick = (e) => {
         e.preventDefault();
         if (password && password !== confirmPassword) {
             alert("Passwords don't match. Do better.");
         } else {
-            const userProfile = { firstName, lastName, displayName, email, imageLocation, currentWeight, caloricGoal };
+            const userProfile = { firstName, lastName, email, currentWeight, dailyCaloricGoal, aboutMe };
             register(userProfile, password)
                 .then(() => history.push("/"));
         }
@@ -48,16 +47,8 @@ export default function Register() {
                             <Input id="lastName" type="text" onChange={e => setLastName(e.target.value)} />
                         </FormGroup>
                         <FormGroup>
-                            <Label htmlFor="displayName">Display Name</Label>
-                            <Input id="displayName" type="text" onChange={e => setDisplayName(e.target.value)} />
-                        </FormGroup>
-                        <FormGroup>
                             <Label for="email">Email</Label>
                             <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor="imageLocation">Profile Image URL</Label>
-                            <Input id="imageLocation" type="text" onChange={e => setImageLocation(e.target.value)} />
                         </FormGroup>
                         <FormGroup>
                             <Label htmlFor="currentWeight">What's Your Current Weight?</Label>
@@ -65,7 +56,7 @@ export default function Register() {
                         </FormGroup>
                         <FormGroup>
                             <Label htmlFor="caloricGoal">Caloric Goal Per Day</Label>
-                            <Input id="caloricGoal" type="text" onChange={e => setCaloricGoal(e.target.value)} />
+                            <Input id="caloricGoal" type="text" onChange={e => setDailyCaloricGoal(e.target.value)} />
                         </FormGroup>
                         <FormGroup>
                             <Label for="password">Password</Label>
@@ -74,6 +65,10 @@ export default function Register() {
                         <FormGroup>
                             <Label for="confirmPassword">Confirm Password</Label>
                             <Input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="aboutMe">Tell us about yourself</Label>
+                            <Input id="aboutMe" type="textarea" onChange={e => setAboutMe(e.target.value)} />
                         </FormGroup>
                         <FormGroup>
                             <Button>Register</Button>

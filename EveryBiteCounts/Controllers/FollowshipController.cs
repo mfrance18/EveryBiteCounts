@@ -1,5 +1,6 @@
 ﻿using EveryBiteCounts.Models;
 using EveryBiteCounts.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace EveryBiteCounts.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FollowshipController : ControllerBase
@@ -28,7 +30,7 @@ namespace EveryBiteCounts.Controllers
             var followerId = GetCurrentUserProfile().Id;
             followShip.FollowerUserProfileId = followerId;
             _followShipRepository.Add(followShip);
-            return CreatedAtAction("Get", new { id = followShip.Id }, followShip);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]

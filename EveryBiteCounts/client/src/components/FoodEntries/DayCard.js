@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { MealTypeList } from "./MealTypeList";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { FoodEntryForm } from "./FoodEntryForm";
@@ -6,9 +6,6 @@ import "./FoodEntry.css"
 
 
 export const DayCard = ({ foods, foodDate, modal, toggle, render, mealTypes, handleDeleteFood }) => {
-    console.log(foods)
-    console.log(foodDate)
-
 
     return (
         <>

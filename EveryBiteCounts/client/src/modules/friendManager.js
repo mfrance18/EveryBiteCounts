@@ -1,9 +1,9 @@
 import { getToken } from "./authManager";
 
 const _apiUrl = "/api/userprofile";
-const apiUrl = "/api/Followship"
+const followUrl = "/api/Followship"
 
-export const getAllUsers = () => {
+export const getPotentialFriends = () => {
     return getToken().then((token) => {
         return fetch(`${_apiUrl}/GetAllProfiles`,
             {
@@ -43,7 +43,7 @@ export const getUserFriends = () => {
 
 export const addFriend = (newFriend) => {
     return getToken().then((token) => {
-        return fetch(apiUrl, {
+        return fetch(followUrl, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ export const addFriend = (newFriend) => {
             body: JSON.stringify(newFriend)
         }).then((res) => {
             if (res.ok) {
-                return res.json();
+                return null
             } else {
                 throw new Error("An unknown error occurred while trying to add friend.");
             }
@@ -62,7 +62,7 @@ export const addFriend = (newFriend) => {
 
 export const deleteFriend = (friend) => {
     return getToken().then((token) => {
-        return fetch(`${apiUrl}/${friend}`, {
+        return fetch(`${followUrl}/${friend}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,

@@ -20,5 +20,6 @@ namespace EveryBiteCounts.Models
         public DateTime CreateDateTime { get; set; }
         public UserProfile UserProfile { get; set; }
         public MealType MealType { get; set; }
+        
     }
 }

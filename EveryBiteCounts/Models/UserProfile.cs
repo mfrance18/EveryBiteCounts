@@ -24,6 +24,7 @@ namespace EveryBiteCounts.Models
         public string ImageLocation { get; set; }
         public int CurrentWeight { get; set; }
         public int DailyCaloricGoal { get; set; }
+        public string AboutMe { get; set; }
         public Followship Followship { get; set; }
         public string FullName
         {

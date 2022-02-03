@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { deleteFriend, getUserFriends } from "../../modules/friendManager";
+import { deleteFriend } from "../../modules/friendManager";
 import { FriendCard } from "./FriendCard";
 import "./Friends.css"
 
 
-export const FriendsList = () => {
-    const [friends, setFriends] = useState([])
+export const FriendsList = ({ friends, render }) => {
+    // const [friends, setFriends] = useState([])
 
-    const getFriends = () => {
-        getUserFriends()
-            .then(res => setFriends(res))
-    }
+    // const getFriends = () => {
+    //     getUserFriends()
+    //         .then(res => setFriends(res))
+    // }
 
     const handleDeleteFriend = (id) => {
         deleteFriend(id)
-            .then(() => getFriends())
+            .then(render)
     }
 
-    useEffect(() => {
-        getFriends()
-    }, [])
+    // useEffect(() => {
+    //     getFriends()
+    // }, [])
 
 
     return (

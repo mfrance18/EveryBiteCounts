@@ -9,6 +9,7 @@ import { FriendsList } from "./Friends/FriendList";
 import MainLogo from "../images/EveryBiteCountsLogo.png"
 import { Button } from "reactstrap";
 import { logout } from "../modules/authManager";
+import { BothLists } from "./Friends/BothLists";
 
 
 
@@ -38,12 +39,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                         </div>
 
                         <div className="myLists">
-                            <div className="userList">
-                                {isLoggedIn ? <UserList /> : <Redirect to="/login" />}
-                            </div>
-                            <div className="friendsList">
-                                {isLoggedIn ? <FriendsList /> : <Redirect to="/login" />}
-                            </div>
+                            {isLoggedIn ? <BothLists /> : <Redirect to="/login" />}
                         </div>
 
                     </section>
