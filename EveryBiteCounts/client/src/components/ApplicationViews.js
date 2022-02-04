@@ -1,15 +1,13 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { DayList } from "./FoodEntries/DayList";
-import { UserList } from "./Friends/UsersList";
 import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
 import "./ApplicationViews.css"
-import { FriendsList } from "./Friends/FriendList";
 import MainLogo from "../images/EveryBiteCountsLogo.png"
 import { Button } from "reactstrap";
 import { logout } from "../modules/authManager";
-import { BothLists } from "./Friends/BothLists";
+import { MyLists } from "./Friends/MyLists";
 
 
 
@@ -39,7 +37,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                         </div>
 
                         <div className="myLists">
-                            {isLoggedIn ? <BothLists /> : <Redirect to="/login" />}
+                            {isLoggedIn ? <MyLists /> : <Redirect to="/login" />}
                         </div>
 
                     </section>

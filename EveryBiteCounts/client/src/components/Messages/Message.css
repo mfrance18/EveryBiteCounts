@@ -1,0 +1,13 @@
+.messageCardContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.messageButtons {
+    margin-bottom: 5px;
+}
+
+button.viewMessage.btn.btn-secondary.btn-sm {
+    margin-right: 5px;
+    margin-left: 5px;
+}

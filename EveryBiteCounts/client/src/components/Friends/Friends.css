@@ -16,12 +16,11 @@ button.friendDetails.btn.btn-secondary.btn-sm {
 .userList {
     border-radius: 18px;
     border: solid lightgray 5px;
-    margin-top: 58px;
     overflow-y: scroll;
     height: 300px;
-    background-color: lightcyan;
+    background-color: #aab5f9;
     padding: 20px;
-    width: 400px;
+    width: 500px;
     box-shadow: 2px 5px 5px grey;
     margin-bottom: 15px;
     -ms-overflow-style: none;
@@ -37,9 +36,10 @@ button.friendDetails.btn.btn-secondary.btn-sm {
     border: solid lightgray 5px;
     overflow-y: auto;
     height: 300px;
-    background-color: lightcyan;
+    background-color: #aab5f9;
     padding: 20px;
-    width: 400px;
+    width: 500px;
+    margin-bottom: 15px;
     box-shadow: 2px 5px 5px grey;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -47,5 +47,24 @@ button.friendDetails.btn.btn-secondary.btn-sm {
 }
 
 .friendsList::-webkit-scrollbar {
+    display: none;
+}
+
+.messageList {
+    border-radius: 18px;
+    border: solid lightgray 5px;
+    margin-top: 58px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    height: 500px;
+    background-color: #aab5f9;
+    padding: 20px;
+    width: 500px;
+    box-shadow: 2px 5px 5px grey;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.messageList::-webkit-scrollbar {
     display: none;
 }

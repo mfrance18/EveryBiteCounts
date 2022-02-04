@@ -6,7 +6,6 @@ export const FoodList = ({ mealTypeId, foodDate, foods, render, handleDeleteFood
 
     let meal = mealTypeId
 
-
     return (
         <>
 
@@ -14,7 +13,7 @@ export const FoodList = ({ mealTypeId, foodDate, foods, render, handleDeleteFood
             <div className="foodList">
                 {foods.map(food => {
                     if (food.mealTypeId == meal) {
-                        return <Food calorieCount={calorieCount} foodDate={foodDate} key={food.id} food={food} handleDeleteFood={handleDeleteFood} render={render} />
+                        return <Food foodDate={foodDate} key={food.id} food={food} handleDeleteFood={handleDeleteFood} render={render} />
                     }
                 })}
             </div>

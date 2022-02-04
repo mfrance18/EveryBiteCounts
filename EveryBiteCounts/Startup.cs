@@ -33,6 +33,7 @@ namespace EveryBiteCounts
             services.AddTransient<IMealTypeRepository, MealTypeRepository>();
             services.AddTransient<IFoodEntryRepository, FoodEntryRepository>();
             services.AddTransient<IFollowshipRepository, FollowshipRepository>();
+            services.AddTransient<IMessageRepository, MessageRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
