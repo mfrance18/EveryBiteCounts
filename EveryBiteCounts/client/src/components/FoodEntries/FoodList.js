@@ -6,6 +6,7 @@ export const FoodList = ({ mealTypeId, foodDate, foods, render, handleDeleteFood
 
     let meal = mealTypeId
 
+
     return (
         <>
 
@@ -17,6 +18,8 @@ export const FoodList = ({ mealTypeId, foodDate, foods, render, handleDeleteFood
                     }
                 })}
             </div>
+
+
         </>
     )
 }

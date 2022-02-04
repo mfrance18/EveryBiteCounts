@@ -26,6 +26,7 @@ export const ReplyForm = ({ message, render, toggleForm }) => {
         addMessage(messages)
             .then(toggleForm)
             .then(render)
+            .then(alert("Message Sent"))
     }
 
     return (

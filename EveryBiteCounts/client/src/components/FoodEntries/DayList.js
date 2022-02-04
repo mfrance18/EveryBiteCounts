@@ -47,10 +47,6 @@ export const DayList = () => {
     let dayId = 1
     let pointer = 0
 
-
-    const calories = foods.calories
-    console.log(calories)
-
     for (let i = 0; i < foods.length; i++) {
 
         let foodDate = foods[i].createDateTime.slice(0, 10)
@@ -58,21 +54,25 @@ export const DayList = () => {
         if (dates[pointer] == undefined) {
             let newDateObj = {
                 "id": dayId,
-                "date": foodDate
+                "date": foodDate,
+                "foods": [foods[i]]
             }
             dates.push(newDateObj)
             dayId++
-        } else if (dates[pointer].date < foodDate) {
+        } else if (dates[pointer].date < foodDate || dates[pointer].date > foodDate) {
             pointer++
             let newDateObj = {
                 "id": dayId,
-                "date": foodDate
+                "date": foodDate,
+                "foods": [foods[i]]
             }
             dates.push(newDateObj)
             dayId++
+        } else {
+            dates[pointer].foods.push(foods[i])
         }
-
     }
+
 
     return (
         <>
@@ -83,8 +83,9 @@ export const DayList = () => {
                 </div>
 
                 <div>
-                    {dates.map(d => <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} foodDate={d.date} foods={foods} render={render} handleDeleteFood={handleDeleteFood} />)}
+                    {dates.map(d => <DayCard key={d.id} dateId={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />)}
                 </div>
+
             </section>
 
             <Modal isOpen={modal} toggle={toggle} className="dailyModal">

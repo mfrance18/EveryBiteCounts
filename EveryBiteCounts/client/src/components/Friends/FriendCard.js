@@ -32,14 +32,7 @@ export const FriendCard = ({ friend, handleDeleteFriend, render }) => {
             </section>
 
             <Modal isOpen={modal} toggle={toggle} className="friendDetailsModal">
-                <ModalTitle toggle={toggle}>Hi There! My name is {friend.fullName}</ModalTitle>
-
-                <ModalHeader>
-                    <h6>About Me: </h6>
-                    {friend.aboutMe}
-                </ModalHeader>
                 <ModalBody>
-                    <h5>Here are some details about me and my goals:</h5>
                     <FriendDetails friend={friend} key={friend.id} />
                 </ModalBody>
             </Modal>

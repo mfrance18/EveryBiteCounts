@@ -18,13 +18,14 @@ namespace EveryBiteCounts.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"
-                       SELECT fe.Id as FoodEntryId, fe.[Name], fe.Calories, fe.MealTypeId, mt.Name as MealTypeName, 
-                                fe.UserProfileId, fe.CreateDateTime, up.[FirstName] as UserProfileName, up.DailyCaloricGoal
-                        FROM FoodEntry fe
-                        Left join MealType mt on mt.Id = fe.MealTypeId
-                        Left join UserProfile up on up.Id = fe.UserProfileId
-                        WHERE fe.UserProfileId = @userId";
+
+                cmd.CommandText = @"SELECT fe.Id as FoodEntryId, fe.[Name], fe.Calories, fe.MealTypeId, mt.Name as MealTypeName, 
+                                    fe.UserProfileId, fe.CreateDateTime, up.[FirstName] as UserProfileName, up.DailyCaloricGoal
+                                    FROM FoodEntry fe
+                                    Left join MealType mt on mt.Id = fe.MealTypeId
+                                    Left join UserProfile up on up.Id = fe.UserProfileId
+                                    WHERE fe.UserProfileId = @userId
+                                    ORDER BY fe.CreateDateTime DESC";
 
                     var foodEntries = new List<FoodEntry>();
 

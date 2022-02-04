@@ -5,13 +5,24 @@ import "./FoodEntry.css"
 import { FoodByDay } from "./FoodByDay";
 
 
-export const DayCard = ({ foods, foodDate, render, mealTypes, handleDeleteFood }) => {
+export const DayCard = ({ foods, foodDate, render, mealTypes, handleDeleteFood, dateId }) => {
 
     const [modal, setModal] = useState(false)
 
     const toggle = () => {
         setModal(!modal)
     }
+
+    const calories = foods.map(f => f.calories)
+    const createdDate = foods.map(f => f.createDateTime)
+
+    console.log(createdDate)
+
+    //acc = accumulator, elm = element
+    //add the accumulator to the element 
+    const calorieCount = calories.reduce((acc, elm) => acc + elm)
+
+
 
 
     return (
@@ -24,6 +35,9 @@ export const DayCard = ({ foods, foodDate, render, mealTypes, handleDeleteFood }
                     <Button className="addButton" onClick={toggle}>Add Food</Button>
                 </div>
                 <MealTypeList foods={foods} foodDate={foodDate} mealTypes={mealTypes} render={render} handleDeleteFood={handleDeleteFood} />
+                <div>
+                    <h4>Total Calories for the day: {calorieCount}</h4>
+                </div>
             </section>
 
             <Modal isOpen={modal} toggle={toggle} className="dailyModal">
