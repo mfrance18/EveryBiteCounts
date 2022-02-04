@@ -21,8 +21,6 @@ export const Food = ({ food, foodDate, handleDeleteFood, render, }) => {
                             {food.name}
                         </div>
 
-
-
                         <div className="foodButtons">
                             <div>
                                 {food.calories}

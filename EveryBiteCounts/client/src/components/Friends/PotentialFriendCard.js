@@ -5,14 +5,10 @@ import { addFriend } from "../../modules/friendManager";
 import "./Friends.css"
 
 
-export const UserCard = ({ user, render }) => {
-
-
-    console.log(user.id, "userid")
-
+export const PotentialFriendCard = ({ potentialFriend, render }) => {
 
     const friendObj = {
-        "followingUserProfileId": user.id
+        "followingUserProfileId": potentialFriend.id
     }
 
     const handleClickSaveFriend = (event) => {
@@ -25,7 +21,7 @@ export const UserCard = ({ user, render }) => {
         <>
             <section className="userCard">
                 <div>
-                    {user.fullName}
+                    {potentialFriend.fullName}
                 </div>
                 <div>
                     <Button className="addFriend" size="sm" type="button" onClick={handleClickSaveFriend}>Add Friend</Button>

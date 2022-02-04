@@ -23,10 +23,11 @@ namespace EveryBiteCounts.Controllers
             _userProfileRepository = userProfileRepository;
         }
 
-        [HttpGet("GetUserProfileById/{id}")]
-        public IActionResult GetUserProfileById(int id)
+        [HttpGet]
+        public IActionResult GetUserProfileById()
         {
-            return Ok(_userProfileRepository.GetUserProfileById(id));
+            var currentUserId = GetCurrentUserProfile().Id;
+            return Ok(_userProfileRepository.GetUserProfileById(currentUserId));
         }
 
         [HttpGet("{firebaseUserId}")]
