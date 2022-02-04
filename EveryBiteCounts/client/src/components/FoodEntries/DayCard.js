@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { MealTypeList } from "./MealTypeList";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
-import { FoodEntryForm } from "./FoodEntryForm";
 import "./FoodEntry.css"
+import { FoodByDay } from "./FoodByDay";
 
 
-export const DayCard = ({ foods, foodDate, modal, toggle, render, mealTypes, handleDeleteFood }) => {
+export const DayCard = ({ foods, foodDate, render, mealTypes, handleDeleteFood }) => {
+
+    const [modal, setModal] = useState(false)
+
+    const toggle = () => {
+        setModal(!modal)
+    }
+
 
     return (
         <>
@@ -22,7 +29,7 @@ export const DayCard = ({ foods, foodDate, modal, toggle, render, mealTypes, han
             <Modal isOpen={modal} toggle={toggle} className="dailyModal">
                 <ModalHeader toggle={toggle}>Add New Food</ModalHeader>
                 <ModalBody>
-                    <FoodEntryForm toggle={toggle} render={render} />
+                    <FoodByDay toggle={toggle} render={render} foodDate={foodDate} />
                 </ModalBody>
             </Modal>
 

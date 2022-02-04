@@ -58,7 +58,7 @@ namespace EveryBiteCounts.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                          SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, up.AboutMe,
+                          SELECT up.Id, up.FirebaseUserId, up.FirstName, up.LastName, up.AboutMe,
                                up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight
                           FROM UserProfile up
                           WHERE up.Id = @Id
