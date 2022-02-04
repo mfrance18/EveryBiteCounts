@@ -18,8 +18,6 @@ export const FriendCard = ({ friend, handleDeleteFriend, render }) => {
         setFormModal(!formModal)
     }
 
-    console.log(friend, "friend")
-
     return (
         <>
             <section className="userCard">

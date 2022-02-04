@@ -11,3 +11,7 @@ button.viewMessage.btn.btn-secondary.btn-sm {
     margin-right: 5px;
     margin-left: 5px;
 }
+
+button.messageDelete.btn.btn-secondary.btn-sm {
+    margin-right: 5px;
+}

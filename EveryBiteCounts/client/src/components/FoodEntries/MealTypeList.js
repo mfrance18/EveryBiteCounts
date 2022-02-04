@@ -8,7 +8,6 @@ export const MealTypeList = ({ foods, foodDate, mealTypes, render, handleDeleteF
     //acc = accumulator, elm = element
     //add the accumulator to the element 
     const calorieCount = calories.reduce((acc, elm) => acc + elm)
-    console.log(calorieCount, "calorieCount")
 
     return (
         <>
