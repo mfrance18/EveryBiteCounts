@@ -22,7 +22,7 @@ export default function Register() {
         if (password && password !== confirmPassword) {
             alert("Passwords don't match. Do better.");
         } else {
-            const userProfile = { firstName, lastName, email, currentWeight, dailyCaloricGoal, aboutMe };
+            const userProfile = { firstName, lastName, email, imageLocation: "https://res.cloudinary.com/mfrance18/image/upload/v1635191829/piyed1wnh5ehtg0dp5h9.png", currentWeight, dailyCaloricGoal, aboutMe };
             register(userProfile, password)
                 .then(() => history.push("/"));
         }

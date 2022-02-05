@@ -3,8 +3,11 @@ import { getPotentialFriends, getUserFriends } from "../../modules/friendManager
 import { PotentialFriendsList } from "./PotentialFriendsList";
 import { FriendsList } from "./FriendList";
 import { MessageList } from "../Messages/MessageList";
+import { UserCard } from "../UserProfile/UserCard";
+import { getCurrentUser } from "../../modules/userProfileManager";
 import "../../components/ApplicationViews.css"
 import { getMessageByUserId } from "../../modules/messageManager";
+
 
 
 
@@ -12,6 +15,7 @@ export const MyLists = () => {
     const [potentialFriends, setPotentialFriends] = useState([])
     const [friends, setFriends] = useState([])
     const [messages, setMessages] = useState([])
+
 
 
     const getMyPotentialFriends = () => {
@@ -29,6 +33,7 @@ export const MyLists = () => {
             .then(res => setMessages(res))
     }
 
+
     const render = () => {
         getMyFriends()
         getMyPotentialFriends()
@@ -43,6 +48,7 @@ export const MyLists = () => {
 
     return (
         <>
+
             <div className="messageList">
                 <MessageList render={render} messages={messages} />
             </div>

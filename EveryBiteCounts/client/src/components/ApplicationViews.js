@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { DayList } from "./FoodEntries/DayList";
 import Login from "../components/Auth/Login";
@@ -8,10 +8,15 @@ import MainLogo from "../images/EveryBiteCountsLogo.png"
 import { Button } from "reactstrap";
 import { logout } from "../modules/authManager";
 import { MyLists } from "./Friends/MyLists";
+import { UserCard } from "./UserProfile/UserCard";
+import { getCurrentUser } from "../modules/userProfileManager";
+
 
 
 
 export default function ApplicationViews({ isLoggedIn }) {
+
+
 
     return (
         <main>
@@ -21,7 +26,9 @@ export default function ApplicationViews({ isLoggedIn }) {
 
                     <section className="homePage">
                         <div className="navImage">
-
+                            <div className="userProfileCard">
+                                <UserCard />
+                            </div>
                             <img className="navLogo" src={MainLogo} alt="Rx Tracker Logo" />
                             <div className="welcome">
                                 <h3>Welcome to Every Bite Counts!</h3>

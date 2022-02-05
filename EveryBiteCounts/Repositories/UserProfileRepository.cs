@@ -93,6 +93,49 @@ namespace EveryBiteCounts.Repositories
                 }
             }
         }
+        public UserProfile GetUserById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                          SELECT up.Id, up.FirebaseUserId, up.FirstName, up.LastName, up.AboutMe,
+                               up.Email, up.ImageLocation, up.DailyCaloricGoal, up.CurrentWeight
+                          FROM UserProfile up
+                          WHERE up.Id = @Id
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        UserProfile userProfile = null;
+
+                        if (reader.Read())
+                        {
+                            userProfile = new UserProfile
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+                                FirstName = DbUtils.GetString(reader, "FirstName"),
+                                LastName = DbUtils.GetString(reader, "LastName"),
+                                Email = DbUtils.GetString(reader, "Email"),
+                                ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
+                                DailyCaloricGoal = DbUtils.GetInt(reader, "DailyCaloricGoal"),
+                                CurrentWeight = DbUtils.GetInt(reader, "CurrentWeight"),
+                                AboutMe = DbUtils.GetString(reader, "AboutMe"),
+                            };
+
+                        }
+                        return userProfile;
+
+
+                    }
+                }
+            }
+        }
         public void Add(UserProfile userProfile)
         {
             using (var conn = Connection)
@@ -114,6 +157,37 @@ namespace EveryBiteCounts.Repositories
                     DbUtils.AddParameter(cmd, "@CurrentWeight", userProfile.CurrentWeight);
                     DbUtils.AddParameter(cmd, "@AboutMe", userProfile.AboutMe);
                     userProfile.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public void Update(UserProfile userProfile)
+        {
+            using(var conn = Connection)
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE UserProfile
+                                        SET 
+                                            FirstName = @firstName,
+                                            LastName = @lastName,
+                                            AboutMe = @aboutMe, 
+                                            CurrentWeight = @currentWeight,
+                                            DailyCaloricGoal = @dailyCaloricGoal,
+                                            ImageLocation = @imageLocation
+                                        WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@firstName", userProfile.FirstName);
+                    cmd.Parameters.AddWithValue("@lastName", userProfile.LastName);
+                    cmd.Parameters.AddWithValue("@aboutMe", userProfile.AboutMe);
+                    cmd.Parameters.AddWithValue("@currentWeight", userProfile.CurrentWeight);
+                    cmd.Parameters.AddWithValue("@dailyCaloricGoal", userProfile.DailyCaloricGoal);
+                    cmd.Parameters.AddWithValue("@imageLocation", userProfile.ImageLocation);
+                    cmd.Parameters.AddWithValue("@id", userProfile.Id);
+
+                    cmd.ExecuteNonQuery();
+
                 }
             }
         }
