@@ -3,7 +3,7 @@ Every Bite Counts is an app that allows users to keep track of their calorie int
 Users can also interact with others by adding them as a friend and messaging them
 
 
-#Tech Used
+# Tech Used
 
 The tech used to create this app:
 <ul>
@@ -11,6 +11,7 @@ The tech used to create this app:
 <li>React</li>
 <li>ASP.NET</li>
 <li>C#</li>
+<li>SQL Database</li>
 <li>SQL Database</li>
 <li>Bootstrap</li>
 </ul>
