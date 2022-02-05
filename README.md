@@ -12,7 +12,7 @@ The tech used to create this app:
 <li>ASP.NET</li>
 <li>C#</li>
 <li>SQL Database</li>
-<li>SQL Database</li>
+<li>Firebase</li>
 <li>Bootstrap</li>
 </ul>
 This project was bootstrapped with <a href="https://github.com/facebook/create-react-app" target="_blank">Create-React-App</a>
