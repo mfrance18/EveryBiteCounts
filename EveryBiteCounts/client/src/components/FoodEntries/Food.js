@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, ModalBody, Button } from "reactstrap";
 import { FoodEditForm } from "./FoodEditForm";
+import { formatDate } from "../Date";
 import "./FoodEntry.css"
 
 export const Food = ({ food, foodDate, handleDeleteFood, render, }) => {
@@ -11,7 +12,7 @@ export const Food = ({ food, foodDate, handleDeleteFood, render, }) => {
     const toggleEdit = () => setEditModal(!editModal);
 
 
-    if (food.createDateTime.slice(0, 10) == foodDate) {
+    if (formatDate(food.createDateTime) == foodDate) {
         return (
             <>
                 <section className="foodCardContainer">

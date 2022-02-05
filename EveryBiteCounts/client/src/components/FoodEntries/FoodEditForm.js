@@ -50,7 +50,7 @@ export const FoodEditForm = ({ toggleEdit, food, render }) => {
                     </FormGroup>
 
                     <FormGroup>
-                        <Label htmlFor="name">How Many Calories?:</Label>
+                        <Label htmlFor="name">How Many Calories?</Label>
                         <Input className="form-control" type="text" id="calories" onChange={handleFieldChange} value={foods.calories} />
                     </FormGroup>
                 </Form>

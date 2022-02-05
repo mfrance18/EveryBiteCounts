@@ -4,7 +4,6 @@ import "./FoodEntry.css"
 
 export const MealTypeList = ({ foods, foodDate, mealTypes, render, handleDeleteFood }) => {
 
-
     return (
         <>
             <section className="mealList">

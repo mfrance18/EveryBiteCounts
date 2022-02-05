@@ -4,12 +4,14 @@ import { addFood } from "../../modules/foodEntryManager";
 import "./FoodEntry.css"
 
 
-export const FoodByDay = ({ toggle, render, foodDate }) => {
+export const FoodByDay = ({ toggle, render, dataBaseDate }) => {
+
+
 
     const [foods, setFoods] = useState({
         name: "",
         calories: "",
-        createDateTime: foodDate,
+        createDateTime: dataBaseDate,
         mealTypeId: 0
     })
 

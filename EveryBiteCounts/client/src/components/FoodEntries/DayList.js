@@ -4,6 +4,7 @@ import { getAllMealTypes } from "../../modules/mealTypeManager";
 import { deleteFood } from "../../modules/foodEntryManager";
 import { FoodEntryForm } from "./FoodEntryForm";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
+import { formatDate } from "../Date";
 import { DayCard } from "./DayCard";
 import "./FoodEntry.css"
 
@@ -49,12 +50,14 @@ export const DayList = () => {
 
     for (let i = 0; i < foods.length; i++) {
 
-        let foodDate = foods[i].createDateTime.slice(0, 10)
+        let foodDate = formatDate(foods[i].createDateTime)
+        let dataBaseDateFormat = foods[i].createDateTime.slice(0, 10)
 
         if (dates[pointer] == undefined) {
             let newDateObj = {
                 "id": dayId,
                 "date": foodDate,
+                "dataBaseDateFormat": dataBaseDateFormat,
                 "foods": [foods[i]]
             }
             dates.push(newDateObj)
@@ -64,6 +67,7 @@ export const DayList = () => {
             let newDateObj = {
                 "id": dayId,
                 "date": foodDate,
+                "dataBaseDateFormat": dataBaseDateFormat,
                 "foods": [foods[i]]
             }
             dates.push(newDateObj)
@@ -83,7 +87,7 @@ export const DayList = () => {
                 </div>
 
                 <div>
-                    {dates.map(d => <DayCard key={d.id} dateId={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />)}
+                    {dates.map(d => <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />)}
                 </div>
 
             </section>
