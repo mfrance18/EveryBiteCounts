@@ -25,7 +25,7 @@ namespace EveryBiteCounts.Repositories
                                     Left join MealType mt on mt.Id = fe.MealTypeId
                                     Left join UserProfile up on up.Id = fe.UserProfileId
                                     WHERE fe.UserProfileId = @userId
-                                    ORDER BY fe.CreateDateTime DESC";
+                                    ORDER BY CreateDateTime DESC";
 
                     var foodEntries = new List<FoodEntry>();
 

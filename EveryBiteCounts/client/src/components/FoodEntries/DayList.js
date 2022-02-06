@@ -16,6 +16,8 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
         setModal(!modal)
     };
 
+
+
     const dates = []
 
     let dayId = 1
@@ -35,7 +37,7 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
             }
             dates.push(newDateObj)
             dayId++
-        } else if (dates[pointer].date < foodDate || dates[pointer].date > foodDate) {
+        } else if (dates[pointer].date > foodDate || dates[pointer].date < foodDate) {
             pointer++
             let newDateObj = {
                 "id": dayId,
@@ -50,6 +52,7 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
         }
     }
 
+    console.log(dates[1])
 
     return (
         <>
@@ -60,7 +63,7 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
                 </div>
 
                 <div>
-                    <Carousel interval={null} variant="dark" wrap={false}>
+                    <Carousel interval={null} variant="dark" wrap={false} slide>
                         {dates.map(d =>
 
                             <Carousel.Item >
