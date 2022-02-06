@@ -25,6 +25,12 @@
     display: none;
 }
 
+.carousel {
+    width: 700px;
+    height: auto;
+}
+
+
 .newDateButton {
     display: flex;
     flex-direction: column;

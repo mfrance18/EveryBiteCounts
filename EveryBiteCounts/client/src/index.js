@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,8 +12,17 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
+
 ReactDOM.render(
-  <App />,
+  <React.Fragment>
+    <Router>
+      <App />
+    </Router>
+  </React.Fragment>,
   document.getElementById('root')
 );
 
