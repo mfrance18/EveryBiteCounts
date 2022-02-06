@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { deleteFriend } from "../../modules/friendManager";
 import { FriendCard } from "./FriendCard";
 import "./Friends.css"

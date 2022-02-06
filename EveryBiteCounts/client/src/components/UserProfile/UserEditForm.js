@@ -17,6 +17,7 @@ export const UserEditForm = ({ render, user, toggleEdit }) => {
         imageLocation: "",
         email: user.email
     })
+
     const [image, setImage] = useState("")
 
     const [isLoading, setIsLoading] = useState(false)
@@ -24,8 +25,6 @@ export const UserEditForm = ({ render, user, toggleEdit }) => {
     const history = useHistory();
 
     const userId = user.id
-
-    console.log(user.email)
 
     const handleFieldChange = event => {
         const stateToChange = { ...users }

@@ -6,8 +6,6 @@ import "./FoodEntry.css"
 
 export const FoodByDay = ({ toggle, render, dataBaseDate }) => {
 
-
-
     const [foods, setFoods] = useState({
         name: "",
         calories: "",

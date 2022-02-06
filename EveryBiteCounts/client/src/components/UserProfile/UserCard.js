@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useState } from "react";
 import { Button, Modal, ModalBody, ModalHeader } from "reactstrap";
-import { getCurrentUser } from "../../modules/userProfileManager";
 import { UserEditForm } from "./UserEditForm";
 import "./UserProfile.css"
+import { logout } from "../../modules/authManager";
 
 
-export const UserCard = () => {
-
-    const [user, setUser] = useState({})
-
-    const getUser = () => {
-        getCurrentUser()
-            .then(res => setUser(res))
-    }
+export const UserCard = ({ user, render }) => {
 
     const [editModal, setEditModal] = useState(false);
 
@@ -22,25 +14,17 @@ export const UserCard = () => {
 
     }
 
-    useEffect(() => {
-        getUser()
-    }, [])
-
-
-
-
 
     return (
         <>
 
             <section className="introContainer">
+                <img className="profilePic" onClick={() => toggleEdit()} src={user.imageLocation} alt="Profile" />
                 <div className="intro">
-                    <img className="profilePic" onClick={() => toggleEdit()} src={user.imageLocation} alt="Profile" />
                     <h1>Hi {user.firstName}!</h1>
-                </div>
-                <div className="img__wrap">
                     <div>
-                        <Button className="editProfile" className="reply" variant="secondary" size="sm" type="button" onClick={toggleEdit}>Click To Edit Profile</Button>
+                        <Button className="editProfile" variant="secondary" size="sm" type="button" onClick={toggleEdit}>Click To Edit Profile</Button>
+                        <Button className="logoutButton" variant="secondary" size="sm" type="button" onClick={logout}>Logout</Button>
                     </div>
                 </div>
             </section>
@@ -48,7 +32,7 @@ export const UserCard = () => {
             <Modal isOpen={editModal} toggle={toggleEdit} className="commentModal">
                 <ModalHeader toggle={toggleEdit}>Edit User Info</ModalHeader>
                 <ModalBody>
-                    <UserEditForm user={user} toggleEdit={toggleEdit} />
+                    <UserEditForm render={render} user={user} toggleEdit={toggleEdit} />
                 </ModalBody>
             </Modal>
         </>

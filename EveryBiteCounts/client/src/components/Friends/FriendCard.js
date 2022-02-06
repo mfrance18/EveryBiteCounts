@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { ModalTitle } from "react-bootstrap";
-import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
+import { Modal, ModalBody, Button } from "reactstrap";
 import { SendForm } from "../Messages/SendForm";
 import "./Friends.css"
 import { FriendDetails } from "./FriendDetails";

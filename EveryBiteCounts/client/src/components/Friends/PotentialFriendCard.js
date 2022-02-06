@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "reactstrap";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addFriend } from "../../modules/friendManager";
 import "./Friends.css"
 
