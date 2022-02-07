@@ -32,7 +32,7 @@ export const DayCard = ({ foods, foodDate, render, mealTypes, handleDeleteFood, 
                 <div className="newDateButton">
                     <h1>Foods entered on {foodDate}</h1>
                     <h3>Your daily Caloric Goal is {caloricGoal} calories</h3>
-                    <h5>You currently have {caloricGoal - calorieCount} calories left</h5>
+                    {calorieCount > caloricGoal ? <h5>You went over your caloric goal for the day, but that's ok. You can do this!</h5> : <h5>You currently have {caloricGoal - calorieCount} calories left</h5>}
                 </div>
                 <div>
                     <Button className="addButton" onClick={toggle}>Add Food</Button>
@@ -41,7 +41,7 @@ export const DayCard = ({ foods, foodDate, render, mealTypes, handleDeleteFood, 
                 <div>
                     <h4>Total Calories for the day: {calorieCount}</h4>
                 </div>
-                {calorieCount > caloricGoal ? <h5>You went over your caloric goal for the day, but that's ok. You can do this!</h5> : null}
+
             </section>
 
             <Modal isOpen={modal} toggle={toggle} className="dailyModal">

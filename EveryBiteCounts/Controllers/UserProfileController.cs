@@ -23,11 +23,18 @@ namespace EveryBiteCounts.Controllers
             _userProfileRepository = userProfileRepository;
         }
 
-        [HttpGet]
+        [HttpGet("GetCurrentUser")]
         public IActionResult GetUserProfileById()
         {
             var currentUserId = GetCurrentUserProfile().Id;
             return Ok(_userProfileRepository.GetUserProfileById(currentUserId));
+        }
+
+        [HttpGet("GetById/{id}")]
+        public IActionResult GetUserById(int id)
+        {
+            var userProfile = _userProfileRepository.GetUserById(id);
+            return Ok(userProfile);
         }
 
         [HttpGet("{firebaseUserId}")]
@@ -72,6 +79,13 @@ namespace EveryBiteCounts.Controllers
                 nameof(GetUserProfile),
                 new { firebaseUserId = userProfile.FirebaseUserId },
                 userProfile);
+        }
+
+        [HttpPut]
+        public IActionResult Put(UserProfile userProfile)
+        {
+            _userProfileRepository.Update(userProfile);
+            return NoContent();
         }
 
         private UserProfile GetCurrentUserProfile()

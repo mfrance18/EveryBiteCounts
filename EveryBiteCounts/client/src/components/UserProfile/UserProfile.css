@@ -1,0 +1,52 @@
+.userProfileCard {
+    margin-top: 50px;
+}
+
+.img__wrap {
+    display: flex;
+    align-items: center;
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.introContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid lightgrey 5px;
+    background: lightgoldenrodyellow;
+    width: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.mainImage {
+    width: 300px;
+    margin-top: 10px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.profileImageEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profilePic {
+    height: 300px;
+    width: 300px;
+    border-radius: 150px;
+}
+
+button.editProfile.btn.btn-secondary.btn-sm {
+    margin-right: 5px;
+}
