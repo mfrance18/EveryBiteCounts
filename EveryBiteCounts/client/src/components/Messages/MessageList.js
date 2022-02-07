@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { MessageCard } from "./MessageCard";
 import { deleteMessage } from "../../modules/messageManager";
 import "./Message.css"
