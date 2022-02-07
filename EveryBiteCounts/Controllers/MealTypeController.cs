@@ -11,9 +11,10 @@ using System.Threading.Tasks;
 
 namespace EveryBiteCounts.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+
     public class MealTypeController : ControllerBase
     {
 

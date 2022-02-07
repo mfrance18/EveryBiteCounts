@@ -12,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace EveryBiteCounts.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    
     public class UserProfileController : ControllerBase
     {
         private readonly IUserProfileRepository _userProfileRepository;

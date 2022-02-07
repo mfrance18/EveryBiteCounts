@@ -51,7 +51,6 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
         }
     }
 
-    console.log(dates, "array")
     return (
         <>
 
