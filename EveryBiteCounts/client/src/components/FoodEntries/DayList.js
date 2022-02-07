@@ -61,10 +61,13 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
                 </div>
 
                 <div>
-                    {dates.reverse().map(d =>
-                        <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />
-                    )}
-
+                    <Carousel controls={true} interval={null} variant="dark" wrap={false} >
+                        {dates.map(d =>
+                            <Carousel.Item key={d.id}>
+                                <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />
+                            </Carousel.Item>
+                        )}
+                    </Carousel>
                 </div>
 
             </section>
