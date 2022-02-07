@@ -1,47 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { getFoodByUserId } from "../../modules/foodEntryManager";
-import { getAllMealTypes } from "../../modules/mealTypeManager";
-import { deleteFood } from "../../modules/foodEntryManager";
+import React, { useState } from "react";
 import { FoodEntryForm } from "./FoodEntryForm";
 import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { formatDate } from "../Date";
 import { DayCard } from "./DayCard";
 import "./FoodEntry.css"
+import { Carousel } from "react-bootstrap";
 
 
-export const DayList = () => {
-    const [foods, setFoods] = useState([])
-    const [meals, setMeals] = useState([])
+
+
+export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
+
     const [modal, setModal] = useState(false);
-
-    const getFoods = () => {
-        getFoodByUserId().then(resp => setFoods(resp))
-    }
 
     const toggle = () => {
         setModal(!modal)
     };
-
-    const render = () => {
-        getFoods()
-    }
-
-    const handleDeleteFood = (id) => {
-        deleteFood(id)
-            .then(() => getFoods())
-    }
-
-    const getMealTypes = () => {
-        return getAllMealTypes()
-            .then(resp => {
-                setMeals(resp)
-            })
-    }
-
-    useEffect(() => {
-        getFoods()
-        getMealTypes()
-    }, [])
 
     const dates = []
 
@@ -62,7 +36,7 @@ export const DayList = () => {
             }
             dates.push(newDateObj)
             dayId++
-        } else if (dates[pointer].date < foodDate || dates[pointer].date > foodDate) {
+        } else if (dates[pointer].date > foodDate || dates[pointer].date < foodDate) {
             pointer++
             let newDateObj = {
                 "id": dayId,
@@ -77,7 +51,7 @@ export const DayList = () => {
         }
     }
 
-
+    console.log(dates, "array")
     return (
         <>
 
@@ -87,7 +61,10 @@ export const DayList = () => {
                 </div>
 
                 <div>
-                    {dates.map(d => <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />)}
+                    {dates.reverse().map(d =>
+                        <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />
+                    )}
+
                 </div>
 
             </section>

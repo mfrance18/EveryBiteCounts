@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
+import React from "react";
 import { MessageDetails } from "./MessageDetails";
 
 import "./Message.css"
