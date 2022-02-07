@@ -4,7 +4,7 @@ import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import { formatDate } from "../Date";
 import { DayCard } from "./DayCard";
 import "./FoodEntry.css"
-import { Carousel } from "react-bootstrap";
+
 
 
 
