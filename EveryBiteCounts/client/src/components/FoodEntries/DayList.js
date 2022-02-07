@@ -8,6 +8,7 @@ import { Carousel } from "react-bootstrap";
 
 
 
+
 export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
 
     const [modal, setModal] = useState(false);
@@ -15,8 +16,6 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
     const toggle = () => {
         setModal(!modal)
     };
-
-
 
     const dates = []
 
@@ -52,8 +51,7 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
         }
     }
 
-    console.log(dates[1])
-
+    console.log(dates, "array")
     return (
         <>
 
@@ -63,15 +61,10 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
                 </div>
 
                 <div>
-                    <Carousel interval={null} variant="dark" wrap={false} slide>
-                        {dates.map(d =>
+                    {dates.reverse().map(d =>
+                        <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />
+                    )}
 
-                            <Carousel.Item >
-                                <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />
-                            </Carousel.Item>
-
-                        )}
-                    </Carousel>
                 </div>
 
             </section>
