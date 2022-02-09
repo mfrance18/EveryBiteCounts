@@ -60,7 +60,7 @@ export const DayList = ({ meals, foods, render, handleDeleteFood }) => {
                 </div>
 
                 <div>
-                    {dates.reverse().map(d =>
+                    {dates.map(d =>
                         <DayCard key={d.id} toggle={toggle} modal={modal} render={render} mealTypes={meals} dataBaseDate={d.dataBaseDateFormat} foodDate={d.date} foods={d.foods} render={render} handleDeleteFood={handleDeleteFood} />
                     )}
 

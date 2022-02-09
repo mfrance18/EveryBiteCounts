@@ -15,3 +15,10 @@ button.viewMessage.btn.btn-secondary.btn-sm {
 button.messageDelete.btn.btn-secondary.btn-sm {
     margin-right: 5px;
 }
+
+.messageHeader.card-header {
+    display: flex;
+    background-color: #aab5f9;
+    align-items: center;
+    color: white;
+}

@@ -23,8 +23,8 @@ export const Food = ({ food, foodDate, handleDeleteFood, render, }) => {
                         </div>
 
                         <div className="foodButtons">
-                            <div>
-                                {food.calories}
+                            <div className="foodCalories">
+                                Calories: {food.calories}
                             </div>
                             <Button className="foodEdit" variant="secondary" size="sm" type="button"
                                 onClick={() => { setSelectedFood({ food }); toggleEdit() }}>Edit</Button>

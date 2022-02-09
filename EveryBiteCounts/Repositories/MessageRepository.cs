@@ -18,7 +18,7 @@ namespace EveryBiteCounts.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT m.Id as MessageId, m.MessageContent, m.SenderId, m.ReceiverId, up.FirstName, up.LastName
+                    cmd.CommandText = @"SELECT m.Id as MessageId, m.MessageContent, m.SenderId, m.ReceiverId, up.FirstName, up.LastName, up.ImageLocation
                                         FROM Message m
                                         Left join UserProfile up on up.Id = m.SenderId
                                         WHERE m.ReceiverId = @userId";
@@ -40,7 +40,8 @@ namespace EveryBiteCounts.Repositories
                             UserProfile = new UserProfile()
                             {
                                 FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
-                                LastName = reader.GetString(reader.GetOrdinal("LastName"))
+                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                ImageLocation = reader.GetString(reader.GetOrdinal("ImageLocation"))
                             }
                         });
                     }

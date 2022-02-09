@@ -13,8 +13,7 @@ export const FriendsList = ({ friends, render }) => {
 
     return (
         <>
-            <h2>Friends List</h2>
-            <hr></hr>
+
             {friends.map(friend => <FriendCard render={render} handleDeleteFriend={handleDeleteFriend} friend={friend} key={friend.id} />)}
 
         </>

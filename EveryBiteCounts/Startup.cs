@@ -29,6 +29,7 @@ namespace EveryBiteCounts
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //dependency injections
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<IMealTypeRepository, MealTypeRepository>();
             services.AddTransient<IFoodEntryRepository, FoodEntryRepository>();

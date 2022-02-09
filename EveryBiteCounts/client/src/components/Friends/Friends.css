@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 5px;
+    width: 500px;
 }
 
 button.addFriend.btn.btn-secondary.btn-sm {
@@ -14,17 +15,10 @@ button.friendDetails.btn.btn-secondary.btn-sm {
 }
 
 .userList {
-    border-radius: 18px;
-    border: solid lightgray 5px;
     overflow-y: scroll;
-    height: 300px;
-    background-color: lightgoldenrodyellow;
-    padding: 20px;
-    width: 500px;
-    box-shadow: 2px 5px 5px grey;
-    margin-bottom: 15px;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    height: 229px;
 }
 
 .userList::-webkit-scrollbar {
@@ -32,38 +26,24 @@ button.friendDetails.btn.btn-secondary.btn-sm {
 }
 
 .friendsList {
-    border-radius: 18px;
-    border: solid lightgray 5px;
-    overflow-y: auto;
-    height: 300px;
-    background-color: lightgoldenrodyellow;
-    padding: 20px;
-    width: 500px;
-    margin-bottom: 15px;
-    box-shadow: 2px 5px 5px grey;
+    overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-
+    height: 229px;
 }
+
 
 .friendsList::-webkit-scrollbar {
     display: none;
 }
 
 .messageList {
-    border-radius: 18px;
-    border: solid lightgray 5px;
-    margin-top: 58px;
-    overflow-y: auto;
-    margin-bottom: 15px;
-    height: 500px;
-    background-color: lightgoldenrodyellow;
-    padding: 20px;
-    width: 500px;
-    box-shadow: 2px 5px 5px grey;
+    overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    height: 400px;
 }
+
 
 .messageList::-webkit-scrollbar {
     display: none;
@@ -71,4 +51,60 @@ button.friendDetails.btn.btn-secondary.btn-sm {
 
 .myLists {
     margin-left: 10px;
+}
+
+.userPic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+
+.myFriendsCards {
+    border-radius: 18px;
+    background-color: lightgoldenrodyellow;
+    padding: 20px;
+    width: 600px;
+    height: 320px;
+    box-shadow: 2px 5px 5px grey;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin-bottom: 10px;
+}
+
+.potentialFriendsCards {
+    border-radius: 18px;
+    background-color: lightgoldenrodyellow;
+    padding: 20px;
+    width: 600px;
+    height: 320px;
+    box-shadow: 2px 5px 5px grey;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.myMessagesCards {
+    border-radius: 18px;
+    background-color: lightgoldenrodyellow;
+    padding: 20px;
+    width: 600px;
+    margin-bottom: 10px;
+    margin-top: 58px;
+    height: 500px;
+    box-shadow: 2px 5px 5px grey;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.friendName {
+    margin-right: 10px;
+}
+
+.potentialFriendCard {
+    display: flex;
+    width: 300px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }

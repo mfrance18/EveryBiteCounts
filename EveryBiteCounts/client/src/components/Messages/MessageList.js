@@ -12,8 +12,6 @@ export const MessageList = ({ messages, render }) => {
 
     return (
         <>
-            <h2>Your Messages</h2>
-            <hr></hr>
             {messages.map(message => <MessageCard render={render} message={message} key={message.id} handleDeleteMessage={handleDeleteMessage} />)}
         </>
     )

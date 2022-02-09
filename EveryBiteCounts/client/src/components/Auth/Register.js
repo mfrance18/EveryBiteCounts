@@ -35,7 +35,7 @@ export default function Register() {
     return (
         <section className="mainRegister">
             <main className="container--register">
-                <div className="login-logo"><img className="loginImage" src={MainLogo} alt="Rx Tracker Logo" /></div>
+                <div className="login-logo"><img className="loginImage" src={MainLogo} alt="Every Bite Counts Logo" /></div>
                 <Form onSubmit={registerClick} className="form--register">
                     <fieldset>
                         <FormGroup>

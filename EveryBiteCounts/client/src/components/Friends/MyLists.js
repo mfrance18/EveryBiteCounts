@@ -44,19 +44,29 @@ export const MyLists = () => {
 
     return (
         <>
+            <section className="myMessagesCards">
+                <h2>Your Messages</h2>
+                <hr></hr>
+                <div className="messageList">
+                    <MessageList render={render} messages={messages} />
+                </div>
+            </section>
 
-            <div className="messageList">
-                <MessageList render={render} messages={messages} />
-            </div>
+            <section className="myFriendsCards">
+                <h2>Friends List</h2>
+                <hr></hr>
+                <div className="friendsList">
+                    <FriendsList friends={friends} render={render} />
+                </div>
+            </section>
 
-            <div className="friendsList">
-                <FriendsList friends={friends} render={render} />
-            </div>
-
-            <div className="userList">
-                <PotentialFriendsList potentialFriends={potentialFriends} render={render} />
-            </div>
-
+            <section className="potentialFriendsCards">
+                <h2>Add Friends</h2>
+                <hr></hr>
+                <div className="userList">
+                    <PotentialFriendsList potentialFriends={potentialFriends} render={render} />
+                </div>
+            </section>
 
         </>
     )

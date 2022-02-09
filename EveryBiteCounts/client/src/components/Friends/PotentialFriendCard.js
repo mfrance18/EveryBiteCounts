@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Button } from "reactstrap";
 import { addFriend } from "../../modules/friendManager";
 import "./Friends.css"
@@ -18,7 +18,10 @@ export const PotentialFriendCard = ({ potentialFriend, render }) => {
 
     return (
         <>
-            <section className="userCard">
+            <section className="potentialFriendCard">
+                <div className="userImage">
+                    <img className="userPic" src={potentialFriend.imageLocation} alt="User" />
+                </div>
                 <div>
                     {potentialFriend.fullName}
                 </div>

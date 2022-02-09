@@ -9,6 +9,9 @@ import { deleteFood } from "../modules/foodEntryManager";
 import { MyLists } from "./Friends/MyLists";
 
 export const MainComponent = () => {
+    //first parameter is the current state(foods), setFoods is the method to update state
+    //the first thing in the array is whatever we pass as an argument
+
     const [foods, setFoods] = useState([])
     const [meals, setMeals] = useState([])
     const [user, setUser] = useState({})
@@ -38,6 +41,15 @@ export const MainComponent = () => {
         deleteFood(id)
             .then(() => getFoods())
     }
+
+
+    //useEffect tells React that your component needs to do something after render
+    //React will remember the function you passed, and call it later after performing DOM updates
+    //in this effect, we are performing data fetching
+    //2 arguments: 1-anonymous function, 2-dependency array
+    //dependency array is an array of dependencies that when changed, trigger the callback function(anonymous function)
+    //if nothing passed into dependency array, it is only called once
+    //dependency array can cause an infinite loop
 
     useEffect(() => {
         getFoods()

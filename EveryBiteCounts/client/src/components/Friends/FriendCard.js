@@ -20,7 +20,10 @@ export const FriendCard = ({ friend, handleDeleteFriend, render }) => {
     return (
         <>
             <section className="userCard">
-                <div>
+                <div className="userImage">
+                    <img className="userPic" src={friend.imageLocation} alt="User" />
+                </div>
+                <div className="friendName">
                     {friend.fullName}
                 </div>
                 <div>
