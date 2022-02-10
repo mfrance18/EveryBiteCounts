@@ -5,7 +5,7 @@ Users can also interact with others by adding them as a friend and messaging the
 # Installation
 <ul>
   <li>Once the project is cloned, you first need to create the database.</li> 
-  <li>If you open the project in Visual Studio, you will see a folder title SQL</li> 
+  <li>If you open the project in Visual Studio, you will see a folder titled SQL</li> 
   <li>Run the 01_EveryBiteCounts_Create_DB.sql query first, and then run the 02_EveryBiteCounts_Seed_Data.sql</li> 
   <li>After those queries have been completed, you can now start the SQL server. </li> 
   <li>In your terminal, you will need to CD into EveryBiteCounts until you reach the directory that contains the client folder</li> 
