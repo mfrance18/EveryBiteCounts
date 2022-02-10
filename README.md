@@ -16,6 +16,7 @@ Users can also interact with others by adding them as a friend and messaging the
   ```
   <li>You should be directed to the login page</li> 
 </ul>
+
 # Login
 
 The static login when first opening the app is:
