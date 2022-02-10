@@ -10,6 +10,7 @@ Users can also interact with others by adding them as a friend and messaging the
   <li>After those queries have been completed, you can now start the SQL server. </li> 
   <li>In your terminal, you will need to CD into EveryBiteCounts until you reach the directory that contains the client folder</li> 
   <li>CD into the client folder and then run the following command:</li> 
+  
   ```bash
   npm start
   ```
