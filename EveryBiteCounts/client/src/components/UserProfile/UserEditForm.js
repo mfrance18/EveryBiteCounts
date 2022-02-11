@@ -22,8 +22,6 @@ export const UserEditForm = ({ render, user, toggleEdit }) => {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const history = useHistory();
-
     const userId = user.id
 
     const handleFieldChange = event => {
