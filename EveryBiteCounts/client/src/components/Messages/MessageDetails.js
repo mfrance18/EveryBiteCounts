@@ -9,7 +9,6 @@ export const MessageDetails = ({ message, render, handleDeleteMessage }) => {
     const toggleForm = () => {
         setModal(!modal)
     };
-    console.log(message, "message")
     return (
         <>
             <Card className="messageCard">

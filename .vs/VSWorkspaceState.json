@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\EveryBiteCounts",
+    "\\EveryBiteCounts\\Models",
+    "\\SQL"
   ],
-  "SelectedNode": "\\EveryBiteCounts.sln",
+  "SelectedNode": "\\SQL\\01_EveryBiteCounts_Create_DB.sql",
   "PreviewInSolutionExplorer": false
 }
